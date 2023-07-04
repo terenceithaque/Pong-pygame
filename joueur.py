@@ -15,6 +15,20 @@ class Joueur(pygame.sprite.Sprite):
         self.rect.y = y
         self.couleur = (255, 255, 255)  # Couleur d'affichage du joueur
 
-    def update(self):
+    def update(self, key):
         "Mettre à jour la position de la raquette du joueur"
-        pass
+        if key[pygame.K_UP]:
+            self.rect.y -= 5
+            print(self.rect.y)
+            pygame.time.wait(2)
+
+            if self.rect.y < 15:
+                self.rect.y = 15
+
+        if key[pygame.K_DOWN]:
+            self.rect.y += 5
+            print(self.rect.y)
+            pygame.time.wait(2)
+
+            if self.rect.y > 500:
+                self.rect.y = 500
