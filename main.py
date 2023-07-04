@@ -28,7 +28,8 @@ while is_running:  # Tant que le jeu est exécuté
     key = pygame.key.get_pressed()  # Détecter les touches pressées par le joueur
 
     joueur.update(key)
-    # adversaire.update()
+
+    adversaire.update()
 
     # Dessiner le joueur à l'écran
     pygame.draw.rect(window, joueur.couleur, joueur)
