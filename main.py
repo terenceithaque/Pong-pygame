@@ -41,7 +41,7 @@ while is_running:  # Tant que le jeu est exécuté
 
     joueur.update(key)
 
-    adversaire.update()
+    adversaire.update(balle.rect)
 
     collision = verifier_collision(balle, joueur, adversaire)
     print("Collision :", collision)
