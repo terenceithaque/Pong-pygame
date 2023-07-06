@@ -1,7 +1,10 @@
 # Programme principal du jeu
 import pygame  # Importation du module Pygame
+from pygame.sprite import Group, spritecollide
 from joueur import *
 from adversaire import *
+from balle import *
+from collision import *
 pygame.init()  # Initialiser Pygame
 pygame.display.init()
 
@@ -15,6 +18,15 @@ joueur = Joueur(joueur_x, joueur_y)
 advesaire_x = 100  # Position x de l'adversaire
 advesaire_y = 250  # Position y de l'adversaire
 adversaire = Adversaire(advesaire_x, advesaire_y)
+
+groupe_joueur = Group()
+groupe_adversaire = Group
+
+groupe_joueur.add(joueur)
+groupe_adversaire.add(adversaire)
+
+
+balle = Balle(400, 300, window)
 
 is_running = True  # Est-ce que le jeu est en cours d'exécution ?
 
@@ -30,6 +42,23 @@ while is_running:  # Tant que le jeu est exécuté
     joueur.update(key)
 
     adversaire.update()
+
+    collision = verifier_collision(balle, joueur, adversaire)
+    print("Collision :", collision)
+    # pygame.time.wait(1500)
+    if collision == "joueur":  # Si la balle rentre en collision avec le joueur
+        print("Entrée en collision avec le joueur")
+        balle.update(sens=1, collision=collision)
+
+    elif collision == "adversaire":
+        print("Entrée en collision avec l'adversaire")
+        balle.update(sens=0, collision=collision)
+
+    else:
+
+        balle.update(sens=0, collision=collision)
+
+    balle.draw()  # Dessiner la balle du jeu
 
     # Dessiner le joueur à l'écran
     pygame.draw.rect(window, joueur.couleur, joueur)

@@ -19,6 +19,7 @@ class Adversaire(pygame.sprite.Sprite):
         "Mettre à jour la position de l'adversaire"
         self.y = randint(-5, 5)  # Choisir un nombre entre -5 et 5
         self.rect.y += self.y
+        pygame.time.wait(2)
 
         if self.rect.y < 0:
             self.rect.y = 0
