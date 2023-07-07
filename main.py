@@ -7,9 +7,14 @@ from balle import *
 from collision import *
 pygame.init()  # Initialiser Pygame
 pygame.display.init()
+pygame.mixer.init
 
 window = pygame.display.set_mode((800, 600))  # Créer une fenêtre de jeu
 pygame.display.set_caption("Pong !")
+
+musique = "Sons/musique/The Coasters Sh Boom Life Could Be A Dream-jEP224Sa4Rw.mp3"
+pygame.mixer.music.load(musique)
+pygame.mixer.music.play(-1)
 
 joueur_x = 700  # Position x du joueur
 joueur_y = 250  # Position y du joueur
