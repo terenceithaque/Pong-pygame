@@ -19,13 +19,15 @@ pygame.mixer.music.play(-1)
 joueur_x = 700  # Position x du joueur
 joueur_y = 250  # Position y du joueur
 joueur = Joueur(joueur_x, joueur_y)
+# print("score lu :", joueur.getScore())
+# pygame.time.wait(1500)
 
 advesaire_x = 100  # Position x de l'adversaire
 advesaire_y = 250  # Position y de l'adversaire
 adversaire = Adversaire(advesaire_x, advesaire_y)
 
 groupe_joueur = Group()
-groupe_adversaire = Group
+groupe_adversaire = Group()
 
 groupe_joueur.add(joueur)
 groupe_adversaire.add(adversaire)
@@ -54,6 +56,10 @@ while is_running:  # Tant que le jeu est exécuté
     if collision == "joueur":  # Si la balle rentre en collision avec le joueur
         print("Entrée en collision avec le joueur")
         balle.update(sens=1, collision=collision)
+        joueur.updateScore(montant=1)  # Augmenter le score du joueur de 1
+        print("score :", joueur.score)
+        joueur.saveScore()
+       # pygame.time.wait(1000)
 
     elif collision == "adversaire":
         print("Entrée en collision avec l'adversaire")
@@ -67,6 +73,7 @@ while is_running:  # Tant que le jeu est exécuté
 
     # Dessiner le joueur à l'écran
     pygame.draw.rect(window, joueur.couleur, joueur)
+    joueur.displayScore(window)
 
     # Dessiner l'adversaire à l'écran
     pygame.draw.rect(window, adversaire.couleur, adversaire)
