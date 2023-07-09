@@ -81,17 +81,18 @@ class Joueur(pygame.sprite.Sprite):
         # score = str(self.score)
 
         # str_score = "Score : {}".format(score)
-
+        score = "Score : {}".format(self.score)
         afficher_score = self.score_font.render(
-            str(self.score), True, pygame.Color("white"))
+            score, True, pygame.Color("white"))
 
-        screen.blit(afficher_score, (700, 500))
+        screen.blit(afficher_score, (650, 560))
 
         if self.best_score == self.score:
             # best_score = str(self.best_score)
             # str_best_score = "Meilleur : {}".format(best_score)
+            meilleur_score = "Meilleur :{}".format(self.best_score)
 
             afficher_meilleur_score = self.best_score_font.render(
-                str(self.best_score), True, pygame.Color("white"))
+                meilleur_score, True, pygame.Color("white"))
 
-            screen.blit(afficher_meilleur_score, (700, 450))
+            screen.blit(afficher_meilleur_score, (650, 510))
